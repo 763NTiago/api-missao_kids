@@ -39,7 +39,7 @@ public class SecurityConfig {
                 .map(u -> User.builder()
                         .username(u.getLogin())
                         .password(u.getSenha())
-                        .roles(u.getPerfil())
+                        .authorities(u.getPerfil())
                         .build())
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
     }
