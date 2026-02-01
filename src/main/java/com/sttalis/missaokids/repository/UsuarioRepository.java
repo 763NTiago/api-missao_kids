@@ -1,6 +1,6 @@
-package com.sttalis.tarefas.repository;
+package com.sttalis.missaokids.repository;
 
-import com.sttalis.tarefas.entity.Usuario;
+import com.sttalis.missaokids.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

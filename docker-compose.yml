@@ -3,15 +3,15 @@ version: '3.8'
 services:
   api_tarefas:
     build: .
-    container_name: api_tarefas_app
+    container_name: api_MK_app
     restart: always
     expose:
       - "8080"
     depends_on:
-      - banco_tarefas
+      - banco_MK
     environment:
       SPRING_PROFILES_ACTIVE: prod
-      DB_HOST: banco_tarefas
+      DB_HOST: banco_MK
       DB_PORT: 5432
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}

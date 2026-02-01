@@ -1,6 +1,6 @@
-package com.sttalis.tarefas.config;
+package com.sttalis.missaokids.config;
 
-import com.sttalis.tarefas.repository.UsuarioRepository;
+import com.sttalis.missaokids.repository.UsuarioRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -22,12 +22,9 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-
                         .requestMatchers("/css/**", "/img/**", "/js/**", "/favicon.ico").permitAll()
-
-
                         .requestMatchers("/login", "/error").permitAll()
-
+                        .requestMatchers("/api/login").permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())

@@ -1,7 +1,7 @@
-package com.sttalis.tarefas.config;
+package com.sttalis.missaokids.config;
 
-import com.sttalis.tarefas.entity.Usuario;
-import com.sttalis.tarefas.repository.UsuarioRepository;
+import com.sttalis.missaokids.entity.Usuario;
+import com.sttalis.missaokids.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;

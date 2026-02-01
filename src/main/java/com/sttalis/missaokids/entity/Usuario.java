@@ -1,4 +1,4 @@
-package com.sttalis.tarefas.entity;
+package com.sttalis.missaokids.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

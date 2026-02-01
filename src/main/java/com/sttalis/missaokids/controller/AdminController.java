@@ -1,4 +1,4 @@
-package com.sttalis.tarefas.controller;
+package com.sttalis.missaokids.controller;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sttalis.tarefas.entity.Usuario;
-import com.sttalis.tarefas.repository.UsuarioRepository;
+import com.sttalis.missaokids.entity.Usuario;
+import com.sttalis.missaokids.repository.UsuarioRepository;
 
 @Controller
 @RequestMapping("/admin")

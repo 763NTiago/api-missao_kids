@@ -1,13 +1,13 @@
-package com.sttalis.tarefas;
+package com.sttalis.missaokids;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TarefasFilhasApplication {
+public class MK_Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TarefasFilhasApplication.class, args);
+		SpringApplication.run(MK_Application.class, args);
 	}
 
 }
