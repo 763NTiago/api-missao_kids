@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  api_tarefas:
+    build: .
+    container_name: api_tarefas_app
+    restart: always
+    expose:
+      - "8080"
+    depends_on:
+      - banco_tarefas
+    environment:
+      DB_HOST: banco_tarefas
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      ADMIN_LOGIN: ${ADMIN_LOGIN}
+      ADMIN_SENHA: ${ADMIN_SENHA}
+
+  # --- 2. O BANCO DE DADOS ---
+  banco_tarefas:
+    image: postgres:15-alpine
+    container_name: postgres_tarefas
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  # --- 3. O PORTEIRO (Caddy) ---
+  caddy:
+    image: caddy:latest
+    container_name: caddy_server
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - api_tarefas
+
+volumes:
+  pg_data:
+  caddy_data:
+  caddy_config:
