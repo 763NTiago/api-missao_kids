@@ -1,6 +1,8 @@
 package com.sttalis.missaokids.controller;
 
 import com.sttalis.missaokids.entity.Usuario;
+import com.sttalis.missaokids.repository.RecompensaRepository;
+import com.sttalis.missaokids.repository.TarefaRepository;
 import com.sttalis.missaokids.repository.UsuarioRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -17,16 +19,25 @@ import java.util.UUID;
 public class AdminController {
 
     private final UsuarioRepository usuarioRepository;
+    private final TarefaRepository tarefaRepository;
+    private final RecompensaRepository recompensaRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public AdminController(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
+    public AdminController(UsuarioRepository usuarioRepository,
+                           TarefaRepository tarefaRepository,
+                           RecompensaRepository recompensaRepository,
+                           PasswordEncoder passwordEncoder) {
         this.usuarioRepository = usuarioRepository;
+        this.tarefaRepository = tarefaRepository;
+        this.recompensaRepository = recompensaRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping
     public String dashboard(Model model) {
         model.addAttribute("usuarios", usuarioRepository.findAll());
+        model.addAttribute("tarefas", tarefaRepository.findAll());
+        model.addAttribute("recompensas", recompensaRepository.findAll());
         return "admin/dashboard";
     }
 
@@ -35,7 +46,7 @@ public class AdminController {
         usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
 
         if (usuario.getPerfil() == null || usuario.getPerfil().isEmpty()) {
-            usuario.setPerfil("ROLE_ADMIN");
+            usuario.setPerfil("ROLE_RESPONSAVEL");
         }
 
         if (usuario.getNomeExibicao() == null || usuario.getNomeExibicao().isEmpty()) {
